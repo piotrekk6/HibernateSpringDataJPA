@@ -11,7 +11,6 @@ public class A {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    protected A() {
-    }
+
 
 }

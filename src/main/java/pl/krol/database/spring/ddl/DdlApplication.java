@@ -1,13 +1,9 @@
-package pl.krol.database.spring.ddl.web;
+package pl.krol.database.spring.ddl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import pl.krol.database.spring.ddl.beans.B;
-import pl.krol.database.spring.ddl.service.BRepository;
 
 @SpringBootApplication
 public class DdlApplication {
@@ -23,7 +19,7 @@ public class DdlApplication {
 ////	{
 ////		return(args)->{
 ////			bRepository.save(new B("Andrzej"));
-////			bRepository.save(new B("koń Rafał"));
+////			bRepository.save(new B("Rafał"));
 ////
 ////            log.info("Found with findAll():");
 ////			for(B b: bRepository.findAll())
