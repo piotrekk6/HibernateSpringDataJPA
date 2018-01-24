@@ -25,4 +25,14 @@ public class B {
     public String toString() {
         return String.format("A [id=%d, name=%s]", id, name);
     }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
 }
