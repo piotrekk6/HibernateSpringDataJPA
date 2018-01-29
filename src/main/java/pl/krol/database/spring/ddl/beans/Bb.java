@@ -12,5 +12,13 @@ public class Bb {
     @OneToOne
     private Aa aa;
 
+    public Bb() {
+    }
+
+    public Bb(Aa aa)
+    {
+        this.aa=aa;
+    }
+
 }
 
