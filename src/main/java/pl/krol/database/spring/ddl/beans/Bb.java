@@ -20,5 +20,26 @@ public class Bb {
         this.aa=aa;
     }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getAaId() {
+        return aa.getId();
+    }
+
+    public void setAa(Aa aa)
+    {
+        this.aa=aa;
+    }
+
+    @Override
+    public String toString() {
+        return "Bb{" +
+                "id=" + id +
+                ", aa=" + aa +
+                '}';
+    }
 }
 

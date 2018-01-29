@@ -10,4 +10,5 @@ public interface ARepository extends JpaRepository<A, Long> {
 
     List<A> findById(long id);
 
+
 }

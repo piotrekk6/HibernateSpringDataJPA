@@ -8,7 +8,7 @@ public class Aa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Bb bb;
 
@@ -17,6 +17,21 @@ public class Aa {
 
     public Aa(Bb bb) {
         this.bb = bb;
-        this.bb = bb;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getBbId() {
+        return bb.getId();
+    }
+
+    @Override
+    public String toString() {
+        return "Aa{" +
+                "id=" + id +
+                ", bb=" + bb +
+                '}';
     }
 }
