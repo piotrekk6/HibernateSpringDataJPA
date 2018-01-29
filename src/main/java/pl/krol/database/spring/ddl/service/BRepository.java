@@ -11,6 +11,4 @@ public interface BRepository extends JpaRepository<B, Long> {
 
     List<B> findById(long id);
 
-    List<B> findByName(String name);
-
 }
