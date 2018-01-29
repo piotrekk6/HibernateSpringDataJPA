@@ -53,7 +53,7 @@ public class TestsAaBbByTestNG extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testInsertOneRecordToAaAndBbWithRelationship()
+    public void testInsertRecordsToAaAndBbWithRelationship()
     {
         List<Aa> aaList= new ArrayList<>();
         List<Bb> bbList= new ArrayList<>();
@@ -66,8 +66,14 @@ public class TestsAaBbByTestNG extends AbstractTestNGSpringContextTests {
             System.out.println("A id: "+ aaList.get(i));
             bbList.get(i).setAa(aaList.get(i));  // przypisz id Aa do id Bb
         }
-        //bbRepository.save(bbList);
+
         aaRepository.save(aaList);
+        int expectedId;
+        int id;
+
+
+
+        //TODO write test testing relationship
 
 
     }
