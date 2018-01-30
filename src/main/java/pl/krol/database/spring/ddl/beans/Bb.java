@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Bb {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
@@ -38,7 +38,7 @@ public class Bb {
     public String toString() {
         return "Bb{" +
                 "id=" + id +
-                ", aa=" + aa +
+                ", aa=" + aa.getId() +
                 '}';
     }
 }

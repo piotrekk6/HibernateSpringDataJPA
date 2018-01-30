@@ -31,7 +31,7 @@ public class Aa {
     public String toString() {
         return "Aa{" +
                 "id=" + id +
-                ", bb=" + bb +
+                ", bb=" + bb.getId() +
                 '}';
     }
 }

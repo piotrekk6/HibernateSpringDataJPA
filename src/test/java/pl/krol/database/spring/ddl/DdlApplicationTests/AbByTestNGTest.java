@@ -1,4 +1,4 @@
-package pl.krol.database.spring.ddl;
+package pl.krol.database.spring.ddl.DdlApplicationTests;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Test
 @SpringBootTest
-public class TestsAbByTestNG extends AbstractTestNGSpringContextTests {
+public class AbByTestNGTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private ARepository aRepository;
@@ -27,7 +27,7 @@ public class TestsAbByTestNG extends AbstractTestNGSpringContextTests {
     public void testInsertOneRecord()
     {
         System.out.println("Wywołano metodę: testInsertOneRecord()" );
-       A  a1= new A();
+       A a1= new A();
        int countBeforeInsert=aRepository.findAll().size();
        aRepository.save(a1);
        int countAfterInert=aRepository.findAll().size();
