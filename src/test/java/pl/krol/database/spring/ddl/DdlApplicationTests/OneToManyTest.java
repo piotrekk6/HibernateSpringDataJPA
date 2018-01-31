@@ -27,17 +27,18 @@ public class OneToManyTest  extends AbstractTestNGSpringContextTests{
     public void testAddRecord()
     {
         Post post= new Post();
-        //postRepository.save(post);
 
-        List<Comment> comments =new ArrayList<Comment>();
+        List<Comment> comments =new ArrayList<>();
         comments.add(new Comment());
         comments.add(new Comment());
         post.setComments(comments);
-
         postRepository.save(post);
 
+        Assert.assertEquals(postRepository.findOne(post.getId()).getComments().size(),2);
+        Assert.assertEquals(postRepository.findOne(post.getId()).getComments().get(0).getId(),comments.get(0).getId());
+        Assert.assertEquals(postRepository.findOne(post.getId()).getComments().get(1).getId(),comments.get(1).getId());
 
-        Assert.assertEquals(postRepository.getOne(post.getId()).getComments().size(),2);
+
 
     }
 
