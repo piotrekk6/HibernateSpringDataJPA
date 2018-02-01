@@ -16,4 +16,7 @@ public interface CRepository extends JpaRepository<C, Long> {
     @Query(value="select * from c WHERE name LIKE 'ASDF'", nativeQuery = true)
     List<C> countRecordsWithNameASDF();
 
+    List<C> findByName(String name);
+
+
 }

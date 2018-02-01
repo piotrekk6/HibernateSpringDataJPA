@@ -27,7 +27,7 @@ public class CTest extends AbstractTestNGSpringContextTests {
     EntityManager entityManager;
 
     @Test
-    public void testWhetherDateIsTheSame() {
+    public void testWhetherDateIsTheSameAfterSaveAndRead() {
         C c = new C(4L, "Godxp", LocalDate.now(), LocalDate.now(), Color.RED);
         cRepository.save(c);
 
@@ -62,6 +62,12 @@ public class CTest extends AbstractTestNGSpringContextTests {
         //native query on entityManager with name = ASDF
         List<C> cList= entityManager.createNativeQuery("select * from c WHERE name LIKE 'ASDF'").getResultList();
         Assert.assertEquals(cList.size(),2);
+
+        //findByName from repository
+        cList.clear();
+        cList=cRepository.findByName("ASDF");
+        Assert.assertEquals(cList.size(),2);
+
     }
 
 }
