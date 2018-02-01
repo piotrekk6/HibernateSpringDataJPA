@@ -14,7 +14,7 @@ import javax.persistence.*;
 public abstract class Vehicle {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
