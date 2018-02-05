@@ -5,10 +5,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.krol.database.spring.ddl.beans.Comment;
-import pl.krol.database.spring.ddl.beans.Post;
-import pl.krol.database.spring.ddl.service.CommentRepository;
-import pl.krol.database.spring.ddl.service.PostRepository;
+import pl.krol.database.spring.ddl.OneToMany.Comment;
+import pl.krol.database.spring.ddl.OneToMany.Post;
+import pl.krol.database.spring.ddl.OneToMany.CommentRepository;
+import pl.krol.database.spring.ddl.OneToMany.PostRepository;
 
 import java.util.ArrayList;
 import java.util.List;

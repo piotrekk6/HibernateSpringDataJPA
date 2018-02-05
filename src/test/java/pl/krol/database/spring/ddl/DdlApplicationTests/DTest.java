@@ -5,8 +5,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.krol.database.spring.ddl.beans.D;
-import pl.krol.database.spring.ddl.service.DRepository;
+import pl.krol.database.spring.ddl.SavingCollectionsInDb.D;
+import pl.krol.database.spring.ddl.SavingCollectionsInDb.DRepository;
 
 import java.util.*;
 

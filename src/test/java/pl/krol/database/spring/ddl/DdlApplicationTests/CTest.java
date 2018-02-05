@@ -5,13 +5,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.krol.database.spring.ddl.beans.C;
-import pl.krol.database.spring.ddl.enums.Color;
-import pl.krol.database.spring.ddl.service.CRepository;
+import pl.krol.database.spring.ddl.ConvertTypesAndQueryTypes.C;
+import pl.krol.database.spring.ddl.ConvertTypesAndQueryTypes.enums.ColorEnum;
+import pl.krol.database.spring.ddl.ConvertTypesAndQueryTypes.CRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
@@ -28,7 +27,7 @@ public class CTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void testWhetherDateIsTheSameAfterSaveAndRead() {
-        C c = new C(4L, "Godxp", LocalDate.now(), LocalDate.now(), Color.RED);
+        C c = new C(4L, "Godxp", LocalDate.now(), LocalDate.now(), ColorEnum.RED);
         cRepository.save(c);
 
         Assert.assertEquals(cRepository.findById(c.getId()).get(0).getMyDate(), c.getMyDate());
@@ -41,9 +40,9 @@ public class CTest extends AbstractTestNGSpringContextTests {
         int cNumberOfRecordsBeforeQuery=cRepository.findAll().size();
         int cNumberOfRecordsAfterQuery;
 
-        C c = new C(99L, "ASDF", LocalDate.of(1993, 2, 23), LocalDate.of(1990, 2, 23), Color.GREEN);
-        C c1 = new C(99L, "ASDF", LocalDate.of(1995, 10, 1), LocalDate.of(1993, 4, 12), Color.RED);
-        C c2 = new C(8L, "ASDF2", LocalDate.of(1845, 8, 4), LocalDate.of(2012, 12, 06), Color.BLUE);
+        C c = new C(99L, "ASDF", LocalDate.of(1993, 2, 23), LocalDate.of(1990, 2, 23), ColorEnum.GREEN);
+        C c1 = new C(99L, "ASDF", LocalDate.of(1995, 10, 1), LocalDate.of(1993, 4, 12), ColorEnum.RED);
+        C c2 = new C(8L, "ASDF2", LocalDate.of(1845, 8, 4), LocalDate.of(2012, 12, 06), ColorEnum.BLUE);
         cRepository.save(c);
         cRepository.save(c1);
         cRepository.save(c2);

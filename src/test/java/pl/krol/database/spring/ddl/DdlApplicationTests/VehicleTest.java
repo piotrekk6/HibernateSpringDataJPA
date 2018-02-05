@@ -5,13 +5,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.krol.database.spring.ddl.beans.Bike;
-import pl.krol.database.spring.ddl.beans.C;
-import pl.krol.database.spring.ddl.beans.Car;
-import pl.krol.database.spring.ddl.enums.Color;
-import pl.krol.database.spring.ddl.service.BikeRepository;
-import pl.krol.database.spring.ddl.service.CarRepository;
-import pl.krol.database.spring.ddl.service.VehicleRepository;
+import pl.krol.database.spring.ddl.Inheritance.Bike;
+import pl.krol.database.spring.ddl.Inheritance.Car;
+import pl.krol.database.spring.ddl.ConvertTypesAndQueryTypes.enums.ColorEnum;
+import pl.krol.database.spring.ddl.Inheritance.BikeRepository;
+import pl.krol.database.spring.ddl.Inheritance.CarRepository;
+import pl.krol.database.spring.ddl.Inheritance.VehicleRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,16 +34,16 @@ public class VehicleTest extends AbstractTestNGSpringContextTests {
 
 
         List<Car> carsList = new ArrayList<>();
-        carsList.add(new Car("Carisma", Color.RED));
-        carsList.add(new Car("Evo9", Color.BLUE));
+        carsList.add(new Car("Carisma", ColorEnum.RED));
+        carsList.add(new Car("Evo9", ColorEnum.BLUE));
         carRepository.save(carsList);
 
 
-        List<Car> resultCarList = carRepository.findByMyColor(Color.RED);
+        List<Car> resultCarList = carRepository.findByMyColor(ColorEnum.RED);
         Assert.assertEquals(resultCarList.size(),1);
         for(Car car: resultCarList)
         {
-            Assert.assertEquals(car.getMyColor(), Color.RED);
+            Assert.assertEquals(car.getMyColor(), ColorEnum.RED);
         }
 
 

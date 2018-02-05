@@ -5,10 +5,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pl.krol.database.spring.ddl.beans.A;
-import pl.krol.database.spring.ddl.beans.B;
-import pl.krol.database.spring.ddl.service.ARepository;
-import pl.krol.database.spring.ddl.service.BRepository;
+import pl.krol.database.spring.ddl.OneToOne.A;
+import pl.krol.database.spring.ddl.OneToOne.B;
+import pl.krol.database.spring.ddl.OneToOne.ARepository;
+import pl.krol.database.spring.ddl.OneToOne.BRepository;
 
 import java.util.List;
 
