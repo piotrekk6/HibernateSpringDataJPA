@@ -3,13 +3,18 @@ package pl.krol.database.spring.ddl.DdlApplicationTests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pl.krol.database.spring.ddl.beans.Factory;
-import pl.krol.database.spring.ddl.beans.Person;
-import pl.krol.database.spring.ddl.beans.Address;
-import pl.krol.database.spring.ddl.beans.UserName;
+import pl.krol.database.spring.ddl.beans.*;
+import pl.krol.database.spring.ddl.service.EmployeeRepository;
 import pl.krol.database.spring.ddl.service.FactoryRepository;
+import pl.krol.database.spring.ddl.service.ProjectRepository;
 import pl.krol.database.spring.ddl.service.UserRepository;
+
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootTest
 @Test
@@ -21,21 +26,56 @@ public class PersonEmbeddableTest extends AbstractTestNGSpringContextTests{
     @Autowired
     private FactoryRepository factoryRepository;
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
+
+    @BeforeClass
+    public void clean() {
+
+        projectRepository.deleteAll();
+        employeeRepository.deleteAll();
+        factoryRepository.deleteAll();
+        userRepository.deleteAll();
+    }
+
     @Test
     public void testSavePerson()
     {
         Person user1= new Person(new UserName("Piotr","Kowalski"),new Address("Lublin","Polska", "23-402","Nadbystrzycka 55"));
         userRepository.save(user1);
-        System.out.println(user1.toString());
 
         Factory factory1= new Factory(new Address("Warszawa","Polska","33-333","Wiejska"));
         factoryRepository.save(factory1);
+
+        Assert.assertEquals(userRepository.findById(user1.getId()).get(0).getId(),user1.getId());
+        Assert.assertEquals(factoryRepository.findById(factory1.getId()).get(0).getId(),factory1.getId());
     }
 
     @Test
     public void testManyToMany()
     {
+        Employee employee1 = new Employee("Andrzej");
+        Employee employee2 = new Employee("John");
+
+        Project project1 = new Project("Db project");
+        Project project2 = new Project("Spring project");
+        Project project3 = new Project("C++ project");
+
+        employee1.setProjects(Arrays.asList(project3));
+        employee2.setProjects(Arrays.asList(project2,project1));
+        employeeRepository.save(employee1);
+        employeeRepository.save(employee2);
+
+        List<Employee> employeeList = employeeRepository.findAll();
+        for(Employee employee : employeeList)
+        {
+            Assert.assertNotNull(employee.getProjects());
+        }
 
     }
+
 
 }

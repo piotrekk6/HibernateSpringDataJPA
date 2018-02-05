@@ -20,5 +20,4 @@ public class UserName {
     @NotNull
     private String secondName;
 
-
 }
