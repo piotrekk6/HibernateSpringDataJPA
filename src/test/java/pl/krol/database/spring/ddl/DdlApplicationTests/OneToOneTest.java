@@ -14,7 +14,7 @@ import java.util.List;
 
 @Test
 @SpringBootTest
-public class AbByTestNGTest extends AbstractTestNGSpringContextTests {
+public class OneToOneTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private ARepository aRepository;

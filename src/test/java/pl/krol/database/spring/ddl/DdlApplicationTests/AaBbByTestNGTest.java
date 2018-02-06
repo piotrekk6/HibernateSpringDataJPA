@@ -18,10 +18,10 @@ import java.util.List;
 @SpringBootTest
 public class AaBbByTestNGTest extends AbstractTestNGSpringContextTests {
 
-    int aaNumberOfRecordsBeforeQuery;
-    int bbNumberOfRecordsBeforeQuery;
-    int aaNumberOfRecordsAfterQuery;
-    int bbNumberOfRecordsAfterQuery;
+    private int aaNumberOfRecordsBeforeQuery;
+    private int bbNumberOfRecordsBeforeQuery;
+    private int aaNumberOfRecordsAfterQuery;
+    private int bbNumberOfRecordsAfterQuery;
 
     @Autowired
     private AaRepository aaRepository;

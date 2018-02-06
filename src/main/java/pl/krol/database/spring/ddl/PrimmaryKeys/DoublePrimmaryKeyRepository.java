@@ -1,4 +1,6 @@
 package pl.krol.database.spring.ddl.PrimmaryKeys;
 
-public class DoublePrimmaryKeyRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DoublePrimmaryKeyRepository  extends JpaRepository<DoublePrimaryKey, IdClass>{
 }

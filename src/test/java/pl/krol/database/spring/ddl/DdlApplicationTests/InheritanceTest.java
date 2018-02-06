@@ -17,7 +17,7 @@ import java.util.List;
 
 @SpringBootTest
 @Test
-public class VehicleTest extends AbstractTestNGSpringContextTests {
+public class InheritanceTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     VehicleRepository vehicleRepository;

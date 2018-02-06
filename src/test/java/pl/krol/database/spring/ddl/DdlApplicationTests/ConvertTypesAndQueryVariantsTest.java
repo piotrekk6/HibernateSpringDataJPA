@@ -17,7 +17,7 @@ import java.util.List;
 
 @SpringBootTest
 @Test
-public class CTest extends AbstractTestNGSpringContextTests {
+public class ConvertTypesAndQueryVariantsTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     CRepository cRepository;

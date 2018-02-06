@@ -12,7 +12,7 @@ import java.util.*;
 
 @SpringBootTest
 @Test
-public class DTest extends AbstractTestNGSpringContextTests {
+public class SavingCollectionsTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private DRepository dRepository;

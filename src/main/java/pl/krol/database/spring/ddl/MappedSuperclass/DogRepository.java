@@ -1,4 +1,6 @@
 package pl.krol.database.spring.ddl.MappedSuperclass;
 
-public interface DogRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DogRepository extends JpaRepository<Dog, Long> {
 }

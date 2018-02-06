@@ -7,18 +7,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pl.krol.database.spring.ddl.Embeddedable.*;
-import pl.krol.database.spring.ddl.ManyToMany.Employee;
-import pl.krol.database.spring.ddl.ManyToMany.Project;
-import pl.krol.database.spring.ddl.ManyToMany.EmployeeRepository;
+import pl.krol.database.spring.ddl.ManyToMany.*;
 import pl.krol.database.spring.ddl.Embeddedable.FactoryRepository;
-import pl.krol.database.spring.ddl.ManyToMany.ProjectRepository;
+import pl.krol.database.spring.ddl.MappedSuperclass.Dog;
+import pl.krol.database.spring.ddl.MappedSuperclass.DogRepository;
+import pl.krol.database.spring.ddl.PrimmaryKeys.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
 @Test
-public class PersonEmbeddableTest extends AbstractTestNGSpringContextTests {
+public class EmbeddableAndManyToManyTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private UserRepository userRepository;
@@ -31,6 +32,15 @@ public class PersonEmbeddableTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private DogRepository dogRepository;
+
+    @Autowired
+    private StringAsPKRepository stringAsPKRepository;
+
+    @Autowired
+    private DoublePrimmaryKeyRepository doublePrimmaryKeyRepository;
 
     @BeforeClass
     public void clean() {
@@ -71,8 +81,35 @@ public class PersonEmbeddableTest extends AbstractTestNGSpringContextTests {
         for (Employee employee : employeeList) {
             Assert.assertNotNull(employee.getProjects());
         }
+    }
+
+    @Test
+    public void testMappedSuperclass() {
+        Dog dog1 = new Dog();
+        dogRepository.save(dog1);
+        Assert.assertEquals(dogRepository.findOne(dog1.getId()).getId(), dog1.getId());
+
 
     }
 
+    @Test
+    public void testStingAsPK() {
+        List<StringAsPK> sapk = new ArrayList<>(Arrays.asList(new StringAsPK(), new StringAsPK(), new StringAsPK(), new StringAsPK()));
+        stringAsPKRepository.save(sapk);
+        System.out.println(sapk);
+        List<StringAsPK> resultList = stringAsPKRepository.findAll();
+        for (StringAsPK record : resultList) {
+            Assert.assertNotNull(sapk.contains(record));
+        }
+    }
 
+    @Test
+    public void testAddCompositeKeyRecords() {
+        DoublePrimaryKey dpk = new DoublePrimaryKey(1L, 4L);
+        doublePrimmaryKeyRepository.save(dpk);
+
+        DoublePrimaryKey fetchedRecord = doublePrimmaryKeyRepository.findOne(new IdClass(1L, 4L));
+        Assert.assertEquals(dpk.getId1(), fetchedRecord.getId1());
+        Assert.assertEquals(dpk.getId2(), fetchedRecord.getId2());
+    }
 }
