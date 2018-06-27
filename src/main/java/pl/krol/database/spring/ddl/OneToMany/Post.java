@@ -1,11 +1,10 @@
 package pl.krol.database.spring.ddl.OneToMany;
 
 import lombok.ToString;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @ToString
@@ -15,9 +14,8 @@ public class Post {
     private Long id;
 
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="post_id", nullable = false)
-    @Fetch(FetchMode.JOIN)
     private List<Comment> comments;
 
     public void setComments(List<Comment> comments) {

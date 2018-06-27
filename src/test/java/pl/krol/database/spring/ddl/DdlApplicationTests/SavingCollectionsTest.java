@@ -23,7 +23,6 @@ public class SavingCollectionsTest extends AbstractTestNGSpringContextTests {
         String[] s1 = {"a", "b", "z", "a", "d"};
         Integer[] i1 = {3, 2, 7, 11, 10, 191, 5};
 
-
         List<String> stringSet = new ArrayList<>(Arrays.asList(s1));
         List<Integer> integerSet = new ArrayList<>(Arrays.asList(i1));
         System.out.println(stringSet.toString());
@@ -34,10 +33,5 @@ public class SavingCollectionsTest extends AbstractTestNGSpringContextTests {
         dRepository.getById(d1.getId()).getNames();
         Assert.assertEquals(dRepository.getById(d1.getId()).getNames(),stringSet);
         Assert.assertEquals(dRepository.getById(d1.getId()).getNumbers(), integerSet);
-
-
-
     }
-
-
 }
